@@ -5,32 +5,24 @@ import styled from "styled-components";
 
 const StartContainer = styled.div`
   display: flex;
-	flex-direction: column;
+  flex-direction: column;
   width: 100%;
   justify-content: center;
   align-items: center;
 `;
 
-const startingPoints = [
-  "Bus Stop",
-  "Bay street",
-  "Fort street",
-  "DT Main entrance",
-  "Emergency",
-  "Royal block - royal west",
-  "Patient Care Center",
-];
+const startingPoints = ["English", "French", "Spanish", "Arabic"];
 
-type StartSelectorProps = {
-	startingPoint: string | undefined;
-	setStartingPoint: React.Dispatch<React.SetStateAction<string | undefined>>;
-}
+type LanguageSelectorProps = {
+  language: string | undefined;
+  setLanguage: React.Dispatch<React.SetStateAction<string | undefined>>;
+};
 
 interface FilteredProps {
   value: string;
 }
 
-const StartSelector = (props: StartSelectorProps) => {
+const LanguageSelector = (props: LanguageSelectorProps) => {
   const [filteredValues, setFilteredValues] = useState<Array<FilteredProps>>(
     []
   );
@@ -46,25 +38,25 @@ const StartSelector = (props: StartSelectorProps) => {
         tempArray.push(tempObject);
       }
     }
-		return !searchText ? [] : tempArray;
+    return !searchText ? [] : tempArray;
   };
 
   const onSelect = (data: string) => {
     console.log("onSelect", data);
-		props.setStartingPoint(data);
+    props.setLanguage(data);
   };
   return (
     <StartContainer>
-			<Title level={3}>Starting Point</Title>
+      <Title level={3}>Langauge</Title>
       <AutoComplete
         options={filteredValues}
         style={{ width: 200 }}
         onSelect={onSelect}
         onSearch={(text: string) => setFilteredValues(getPanelValue(text))}
-        placeholder="Select Starting Point"
+        placeholder="Select Language"
       />
     </StartContainer>
   );
 };
 
-export default StartSelector;
+export default LanguageSelector;
