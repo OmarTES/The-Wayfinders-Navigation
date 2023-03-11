@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
-import SearchBar from './Components/SearchBar';
+import React from 'react';
+import StartSelector from './Components/StartSelector';
 
 function App() {
   return (
     <div className="App">
-      <SearchBar/>
+      <StartSelector/>
     </div>
   );
 }
