@@ -1,8 +1,10 @@
-import { Button } from "antd";
+import { Button, Typography } from "antd";
 import Title from "antd/es/typography/Title";
 import React from "react";
 import styled from "styled-components";
 import SearchBar from "./SearchBar";
+
+const { Text } = Typography;
 
 const MainContainer = styled.div`
   width: 100%;
@@ -12,9 +14,16 @@ const MainContainer = styled.div`
   align-items: center;
 `;
 
+const SettingsContainer = styled.div`
+  display: flex;
+	flex-direction: column;
+	width: 100%;
+	align-items: flex-end;
+`;
+
 const SearchContainer = styled.div`
   display: flex;
-	align-items: center;
+  align-items: center;
 `;
 
 const ImageContainer = styled.img`
@@ -24,7 +33,8 @@ const ImageContainer = styled.img`
 
 type MainPageProps = {
   setLanguage: React.Dispatch<React.SetStateAction<string>>;
-	location: string;
+  location: string;
+  language: string;
 };
 
 const MainPage = (props: MainPageProps) => {
@@ -33,12 +43,15 @@ const MainPage = (props: MainPageProps) => {
   };
   return (
     <MainContainer>
-			<Title level={3}>Destination Point</Title>
+      <SettingsContainer>
+        <Text type="success">Starting Point: {props.location}</Text>
+        <Text type="success">Language: {props.language}</Text>
+      </SettingsContainer>
+      <Title level={3}>Destination Point</Title>
       <SearchContainer>
         <SearchBar />
-				<Button>WayFind</Button>
+        <Button>Search</Button>
       </SearchContainer>
-			<Title level={5}>Starting Point: {props.location}</Title>
       <ImageContainer src={require("../Assets/rjh_map.png")} />
       <Button onClick={resetApp}>Reset App to Language selection</Button>
     </MainContainer>
