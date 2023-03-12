@@ -1,21 +1,21 @@
-import { AutoComplete } from 'antd';
-import React, { useState } from 'react'
-import styled from 'styled-components';
+import { AutoComplete } from "antd";
+import React, { useState } from "react";
+import styled from "styled-components";
 
 const SearchContainer = styled.div`
-margin-right: 2px;
+  margin-right: 2px;
   display: flex;
   justify-content: center;
   align-items: center;
-`
+  width: 90%;
+`;
 
 interface FilteredProps {
   value: string;
 }
 
 const SearchBar = () => {
-
-  const listPlaces: string[] = ['Main Entrance', 'Emergency'];
+  const listPlaces: string[] = ["Main Entrance", "Emergency"];
   const [filteredValues, setFilteredValues] = useState<Array<FilteredProps>>(
     []
   );
@@ -35,8 +35,7 @@ const SearchBar = () => {
   };
 
   const onSelect = (data: string) => {
-    console.log('onSelect', data);
-
+    console.log("onSelect", data);
   };
 
   return (
@@ -44,7 +43,7 @@ const SearchBar = () => {
       <SearchContainer>
         <AutoComplete
           options={filteredValues}
-          style={{ width: 200 }}
+          style={{ width: '100%' }}
           onSelect={onSelect}
           onSearch={(text) => setFilteredValues(getPanelValue(text))}
           placeholder={"Enter name of place"}

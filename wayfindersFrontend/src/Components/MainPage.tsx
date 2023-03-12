@@ -1,8 +1,11 @@
 import { Button, Typography } from "antd";
 import Title from "antd/es/typography/Title";
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import SearchBar from "./SearchBar";
+import Toolbar from "./Toolbar";
+import mapHere from '../Assets/map_here.png';
+import mapPath from '../Assets/map_path.png';
 
 const { Text } = Typography;
 
@@ -14,21 +17,17 @@ const MainContainer = styled.div`
   align-items: center;
 `;
 
-const SettingsContainer = styled.div`
-  display: flex;
-	flex-direction: column;
-	width: 100%;
-	align-items: flex-end;
-`;
-
 const SearchContainer = styled.div`
   display: flex;
   align-items: center;
+  margin-bottom: 1em;
+	width: 66%;
 `;
 
 const ImageContainer = styled.img`
   width: 600px;
   height: 600px;
+  margin-bottom: 1em;
 `;
 
 type MainPageProps = {
@@ -38,22 +37,24 @@ type MainPageProps = {
 };
 
 const MainPage = (props: MainPageProps) => {
-  const resetApp = () => {
+	const [image, setImage] = useState<string>(mapHere)
+  const changeLanguage = () => {
     props.setLanguage("");
   };
+
+	const changePicture = () => {
+		setImage(mapPath)
+	}
+
   return (
     <MainContainer>
-      <SettingsContainer>
-        <Text type="success">Starting Point: {props.location}</Text>
-        <Text type="success">Language: {props.language}</Text>
-      </SettingsContainer>
+			<Toolbar startingPoint={props.location} language={props.language} changeLanguage={changeLanguage}/>
       <Title level={3}>Destination Point</Title>
       <SearchContainer>
         <SearchBar />
-        <Button>Search</Button>
+        <Button onClick={changePicture}>Search</Button>
       </SearchContainer>
-      <ImageContainer src={require("../Assets/rjh_map.png")} />
-      <Button onClick={resetApp}>Reset App to Language selection</Button>
+      <ImageContainer src={image} />
     </MainContainer>
   );
 };
