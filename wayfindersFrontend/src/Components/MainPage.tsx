@@ -6,6 +6,7 @@ import SearchBar from "./SearchBar";
 import Toolbar from "./Toolbar";
 import mapHere from '../Assets/map_here.png';
 import mapPath from '../Assets/map_path.png';
+import mapPathEm from '../Assets/map_path_em.png';
 
 const { Text } = Typography;
 
@@ -57,7 +58,7 @@ const MainPage = (props: MainPageProps) => {
 	}
 
 	const emergencyDirections = () => {
-		setImage(mapPath)
+		setImage(mapPathEm)
 	}
 
   return (
@@ -70,7 +71,7 @@ const MainPage = (props: MainPageProps) => {
       </SearchContainer>
       <ImageContainer src={image} />
 			<EmergencyButtonDiv>
-				<Button onClick={eemergencyDirections} danger shape="round" type="primary" size="large">Directions to Emergency Department</Button>
+				<Button onClick={emergencyDirections} danger shape="round" type="primary" size="large">Directions to Emergency Department</Button>
 			</EmergencyButtonDiv>
     </MainContainer>
   );
