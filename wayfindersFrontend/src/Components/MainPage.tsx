@@ -30,6 +30,16 @@ const ImageContainer = styled.img`
   margin-bottom: 1em;
 `;
 
+const EmergencyButtonDiv = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+  position: absolute;
+  bottom: 0;
+	text-align: center;
+	margin-bottom: 4em;
+`;
+
 type MainPageProps = {
   setLanguage: React.Dispatch<React.SetStateAction<string>>;
   location: string;
@@ -46,6 +56,10 @@ const MainPage = (props: MainPageProps) => {
 		setImage(mapPath)
 	}
 
+	const emergencyDirections = () => {
+		setImage(mapPath)
+	}
+
   return (
     <MainContainer>
 			<Toolbar startingPoint={props.location} language={props.language} changeLanguage={changeLanguage}/>
@@ -55,6 +69,9 @@ const MainPage = (props: MainPageProps) => {
         <Button onClick={changePicture}>Search</Button>
       </SearchContainer>
       <ImageContainer src={image} />
+			<EmergencyButtonDiv>
+				<Button onClick={eemergencyDirections} danger shape="round" type="primary" size="large">Directions to Emergency Department</Button>
+			</EmergencyButtonDiv>
     </MainContainer>
   );
 };
