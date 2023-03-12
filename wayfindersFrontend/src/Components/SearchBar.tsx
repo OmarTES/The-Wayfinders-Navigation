@@ -1,5 +1,5 @@
 import { AutoComplete } from 'antd';
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import styled from 'styled-components';
 
 const SearchContainer = styled.div`
@@ -7,7 +7,7 @@ margin-right: 2px;
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+`
 
 interface FilteredProps {
   value: string;

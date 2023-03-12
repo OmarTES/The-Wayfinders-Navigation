@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 const StartContainer = styled.div`
   display: flex;
-	flex-direction: column;
+  flex-direction: column;
   width: 100%;
   justify-content: center;
   align-items: center;
@@ -34,6 +34,9 @@ const StartSelector = (props: StartSelectorProps) => {
   const [filteredValues, setFilteredValues] = useState<Array<FilteredProps>>(
     []
   );
+  const [selectedStartingPoint, setSelectedStartingPoint] = useState<string>(
+    ""
+  );
 
   const getPanelValue = (searchText: string) => {
     const tempArray: Array<FilteredProps> = [];
@@ -46,16 +49,17 @@ const StartSelector = (props: StartSelectorProps) => {
         tempArray.push(tempObject);
       }
     }
-		return !searchText ? [] : tempArray;
+    return !searchText ? [] : tempArray;
   };
 
   const onSelect = (data: string) => {
     console.log("onSelect", data);
 		props.setStartingPoint(data);
   };
+
   return (
     <StartContainer>
-			<Title level={3}>Starting Point</Title>
+      <Title level={3}>Starting Point</Title>
       <AutoComplete
         options={filteredValues}
         style={{ width: 200 }}
@@ -63,6 +67,13 @@ const StartSelector = (props: StartSelectorProps) => {
         onSearch={(text: string) => setFilteredValues(getPanelValue(text))}
         placeholder="Select Starting Point"
       />
+      {selectedStartingPoint && (
+        <img
+          src={require(`../Assets/rjh_map.png`)}
+          alt="Starting point map"
+          style={{ maxWidth: "100%", marginTop: 20 }}
+        />
+      )}
     </StartContainer>
   );
 };
