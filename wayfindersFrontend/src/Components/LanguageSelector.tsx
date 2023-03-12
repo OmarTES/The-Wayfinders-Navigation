@@ -15,7 +15,7 @@ const startingPoints = ["English", "French", "Spanish", "Arabic"];
 
 type LanguageSelectorProps = {
   language: string | undefined;
-  setLanguage: React.Dispatch<React.SetStateAction<string | undefined>>;
+  setLanguage: React.Dispatch<React.SetStateAction<string>>;
 };
 
 interface FilteredProps {
@@ -29,7 +29,7 @@ const LanguageSelector = (props: LanguageSelectorProps) => {
 
   const getPanelValue = (searchText: string) => {
     const tempArray: Array<FilteredProps> = [];
-    const regEx = new RegExp(searchText);
+    const regEx = new RegExp(searchText.toLowerCase());
     for (let i = 0; i < startingPoints.length; i++) {
       if (startingPoints[i].toLowerCase().match(regEx)) {
         const tempObject: FilteredProps = {
@@ -38,7 +38,7 @@ const LanguageSelector = (props: LanguageSelectorProps) => {
         tempArray.push(tempObject);
       }
     }
-    return !searchText ? [] : tempArray;
+    return tempArray;
   };
 
   const onSelect = (data: string) => {
@@ -47,7 +47,7 @@ const LanguageSelector = (props: LanguageSelectorProps) => {
   };
   return (
     <StartContainer>
-      <Title level={3}>Langauge</Title>
+      <Title level={3}>Language</Title>
       <AutoComplete
         options={filteredValues}
         style={{ width: 200 }}

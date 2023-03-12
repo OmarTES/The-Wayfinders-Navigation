@@ -7,7 +7,7 @@ import StartSelector from "./Components/StartSelector";
 
 function App() {
   const [startingPoint, setStartingPoint] = useState<string>();
-  const [language, setLanguage] = useState<string>();
+  const [language, setLanguage] = useState<string>('');
 
   return (
     <div>
@@ -24,7 +24,7 @@ function App() {
           )}
         </StartLanguagePage>
       )}
-      {startingPoint && language && <MainPage setLanguage={setLanguage}/>}
+      {startingPoint && language && <MainPage location={startingPoint} setLanguage={setLanguage}/>}
       {startingPoint && !language && (
         <LanguagePage>
           <LanguageSelector language={language} setLanguage={setLanguage} />
