@@ -32,6 +32,10 @@ const LandAcknowledgementDiv = styled.div`
   bottom: 0;
   text-align: center;
   margin-bottom: 2em;
+	@media(max-width: 800px) {
+		position: relative;
+		margin-top: 50px;
+	}
 `;
 
 const StartLanguagePage = (props: StartLanguageProps) => {
