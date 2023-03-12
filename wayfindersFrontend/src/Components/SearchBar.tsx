@@ -30,6 +30,7 @@ const SearchBar = () => {
     "Laboratory",
     "Endoscopy",
     "Hemodialysis",
+    "MRI"
   ];
   const [filteredValues, setFilteredValues] = useState<Array<FilteredProps>>(
     []
@@ -37,7 +38,7 @@ const SearchBar = () => {
 
   const getPanelValue = (searchText: string) => {
     const tempArray: Array<FilteredProps> = [];
-    const regEx = new RegExp(searchText);
+    const regEx = new RegExp(searchText.toLowerCase());
     for (let i = 0; i < listPlaces.length; i++) {
       if (listPlaces[i].toLowerCase().match(regEx)) {
         const tempObject: FilteredProps = {

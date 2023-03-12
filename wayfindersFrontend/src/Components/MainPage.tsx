@@ -50,6 +50,7 @@ const ImageContainer = styled.img`
   width: 66%;
   /* height: 600px; */
   margin-bottom: 1em;
+	margin-right: 1em;
 `;
 
 const ButtonImage = styled.img`
@@ -70,7 +71,7 @@ const EmergencyButtonDiv = styled.div`
 `;
 
 type MainPageProps = {
-  setLanguage: React.Dispatch<React.SetStateAction<string>>;
+  setLanguage: React.Dispatch<React.SetStateAction<string | undefined>>;
   location: string;
   language: string;
 };
@@ -94,12 +95,16 @@ const MRIDirections: Array<Directions> = [
     icon: <ArrowCircleUpIcon />,
   },
   {
-    text: "Take your fourth left",
+    text: "Take your next left",
     icon: <ArrowCircleLeftIcon />,
   },
   {
-    text: "Take your second right",
+    text: "Take your next right",
     icon: <ArrowCircleRightIcon />,
+  },
+	{
+    text: "Take your next left",
+    icon: <ArrowCircleLeftIcon />,
   },
   {
     text: "Follow to end of hallway and take a right",
@@ -107,6 +112,29 @@ const MRIDirections: Array<Directions> = [
   },
   {
     text: "First door on your left is your destination",
+    icon: <ArrowCircleLeftIcon />,
+  },
+];
+
+const ERDirections: Array<Directions> = [
+  {
+    text: "Take your first right",
+    icon: <ArrowCircleRightIcon />,
+  },
+  {
+    text: "Go to the end of the hallway and take a left",
+    icon: <ArrowCircleLeftIcon />,
+  },
+  {
+    text: "Go to end of hallway and take a right at the intersection",
+    icon: <ArrowCircleUpIcon />,
+  },
+  {
+    text: "Take your next left",
+    icon: <ArrowCircleLeftIcon />,
+  },
+  {
+    text: "Follow hallway until you see the ER on your left",
     icon: <ArrowCircleLeftIcon />,
   },
 ];
@@ -129,6 +157,7 @@ const MainPage = (props: MainPageProps) => {
 
   const emergencyDirections = () => {
     setImage(mapPathEm);
+		setDirections(ERDirections);
     setButtonImage(buttonPressed);
   };
 
@@ -173,7 +202,7 @@ const MainPage = (props: MainPageProps) => {
           <DirectionContainer>
             <div onClick={changeCount}>
               <Speech
-                style={style}
+                // style={style}
                 voice="Google UK English Female"
                 volume={1}
                 lang="EN-GB"

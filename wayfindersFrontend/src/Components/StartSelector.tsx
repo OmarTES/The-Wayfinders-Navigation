@@ -44,7 +44,7 @@ const StartSelector = (props: StartSelectorProps) => {
 
   const getPanelValue = (searchText: string) => {
     const tempArray: Array<FilteredProps> = [];
-    const regEx = new RegExp(searchText);
+    const regEx = new RegExp(searchText.toLowerCase());
     for (let i = 0; i < startingPoints.length; i++) {
       if (startingPoints[i].toLowerCase().match(regEx)) {
         const tempObject: FilteredProps = {

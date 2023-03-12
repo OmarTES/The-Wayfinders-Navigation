@@ -11,11 +11,24 @@ const StartContainer = styled.div`
   align-items: center;
 `;
 
-const startingPoints = ["English", "French", "Spanish", "Arabic", "Hul'q'umi'num"];
+const startingPoints = [
+  "English",
+  "French",
+  "Spanish",
+  "Arabic",
+  "Hul'q'umi'num",
+];
+const startingPointsObjects = [
+  { value: "English" },
+  { value: "French" },
+  { value: "Spanish" },
+  { value: "Arabic" },
+  { value: "Hul'q'umi'num" },
+];
 
 type LanguageSelectorProps = {
   language: string | undefined;
-  setLanguage: React.Dispatch<React.SetStateAction<string>>;
+  setLanguage: React.Dispatch<React.SetStateAction<string | undefined>>;
 };
 
 interface FilteredProps {
@@ -24,7 +37,7 @@ interface FilteredProps {
 
 const LanguageSelector = (props: LanguageSelectorProps) => {
   const [filteredValues, setFilteredValues] = useState<Array<FilteredProps>>(
-    []
+    startingPointsObjects
   );
 
   const getPanelValue = (searchText: string) => {
@@ -60,4 +73,4 @@ const LanguageSelector = (props: LanguageSelectorProps) => {
 };
 
 export default LanguageSelector;
- // "react": "^18.2.0",
+// "react": "^18.2.0",

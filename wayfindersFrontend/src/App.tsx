@@ -6,7 +6,7 @@ import StartSelector from "./Components/StartSelector";
 
 function App() {
   const [startingPoint, setStartingPoint] = useState<string>();
-  const [language, setLanguage] = useState<string>('');
+  const [language, setLanguage] = useState<string>();
 
   return (
     <div>
