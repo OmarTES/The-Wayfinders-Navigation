@@ -11,7 +11,7 @@ const StartContainer = styled.div`
   align-items: center;
 `;
 
-const startingPoints = ["English", "French", "Spanish", "Arabic"];
+const startingPoints = ["English", "French", "Spanish", "Arabic", "Hul'q'umi'num"];
 
 type LanguageSelectorProps = {
   language: string | undefined;
@@ -60,3 +60,4 @@ const LanguageSelector = (props: LanguageSelectorProps) => {
 };
 
 export default LanguageSelector;
+ // "react": "^18.2.0",

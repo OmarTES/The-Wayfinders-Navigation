@@ -15,16 +15,21 @@ const startingPoints = [
   "Bus Stop",
   "Bay street",
   "Fort street",
-  "DT Main entrance",
+  "Diagnostic and Treatment Centre",
   "Emergency",
-  "Royal block - royal west",
+  "Royal block",
   "Patient Care Center",
+  "West Block",
+  "Memorial Pavilion",
+  "Richmond Pavilion",
+  "D&T",
+  "BC Cancer Agency",
 ];
 
 type StartSelectorProps = {
-	startingPoint: string | undefined;
-	setStartingPoint: React.Dispatch<React.SetStateAction<string | undefined>>;
-}
+  startingPoint: string | undefined;
+  setStartingPoint: React.Dispatch<React.SetStateAction<string | undefined>>;
+};
 
 interface FilteredProps {
   value: string;
@@ -34,9 +39,8 @@ const StartSelector = (props: StartSelectorProps) => {
   const [filteredValues, setFilteredValues] = useState<Array<FilteredProps>>(
     []
   );
-  const [selectedStartingPoint, setSelectedStartingPoint] = useState<string>(
-    ""
-  );
+  const [selectedStartingPoint, setSelectedStartingPoint] =
+    useState<string>("");
 
   const getPanelValue = (searchText: string) => {
     const tempArray: Array<FilteredProps> = [];
@@ -54,7 +58,7 @@ const StartSelector = (props: StartSelectorProps) => {
 
   const onSelect = (data: string) => {
     console.log("onSelect", data);
-		props.setStartingPoint(data);
+    props.setStartingPoint(data);
   };
 
   return (

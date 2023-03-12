@@ -15,7 +15,22 @@ interface FilteredProps {
 }
 
 const SearchBar = () => {
-  const listPlaces: string[] = ["Main Entrance", "Emergency"];
+  const listPlaces: string[] = [
+    "Medical resonance imaging",
+    "Emergency",
+    "CT scan",
+    "Royal Block",
+    "Surgical Suture",
+    "Emergency Department",
+    "X-ray",
+    "Atrial Fibrillation Clinic",
+    "Ultrasound",
+    "Echocardiography",
+    "Nuclear Medicine",
+    "Laboratory",
+    "Endoscopy",
+    "Hemodialysis",
+  ];
   const [filteredValues, setFilteredValues] = useState<Array<FilteredProps>>(
     []
   );
@@ -43,7 +58,7 @@ const SearchBar = () => {
       <SearchContainer>
         <AutoComplete
           options={filteredValues}
-          style={{ width: '100%' }}
+          style={{ width: "100%" }}
           onSelect={onSelect}
           onSearch={(text) => setFilteredValues(getPanelValue(text))}
           placeholder={"Enter name of place"}
