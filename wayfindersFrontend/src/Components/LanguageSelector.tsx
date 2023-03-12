@@ -47,7 +47,7 @@ const LanguageSelector = (props: LanguageSelectorProps) => {
   };
   return (
     <StartContainer>
-      <Title level={3}>Language</Title>
+      <Title level={3}>Choose Language</Title>
       <AutoComplete
         options={filteredValues}
         style={{ width: 200 }}

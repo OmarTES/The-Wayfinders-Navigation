@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import LanguagePage from "./Components/LanguagePage";
 import LanguageSelector from "./Components/LanguageSelector";
 import MainPage from "./Components/MainPage";
 import StartLanguagePage from "./Components/StartLanguagePage";
