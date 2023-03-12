@@ -11,10 +11,10 @@ function App() {
 
   return (
     <div>
-      {!startingPoint && (
+      {(!language || !startingPoint) && (
         <StartLanguagePage>
           <LanguageSelector language={language} setLanguage={setLanguage} />
-          {language ? (
+          {language && !startingPoint ? (
             <StartSelector
               startingPoint={startingPoint}
               setStartingPoint={setStartingPoint}
@@ -24,12 +24,7 @@ function App() {
           )}
         </StartLanguagePage>
       )}
-      {startingPoint && language && <MainPage location={startingPoint} setLanguage={setLanguage}/>}
-      {startingPoint && !language && (
-        <LanguagePage>
-          <LanguageSelector language={language} setLanguage={setLanguage} />
-        </LanguagePage>
-      )}
+      {startingPoint && language && <MainPage language={language} location={startingPoint} setLanguage={setLanguage}/>}
     </div>
   );
 }
